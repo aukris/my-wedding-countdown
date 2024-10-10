@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="favicon.png " />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Lobster+Two:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/site/site.min.css">
+    <title>!You & Me!</title>
+
+</head>
+
+
+<body>
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: inherit;
+            box-sizing: inherit;
+        }
+
+        html {
+            font-size: 62.5%;
+            overflow-y: hidden;
+        }
+
+        ::-moz-selection {
+            background-color: #4b4b4b;
+            color: #c9b375;
+        }
+
+        ::selection {
+            background-color: #4b4b4b;
+            color: #c9b375;
+        }
+
+        body {
+            line-height: 1.7;
+            font-weight: 400;
+            font-family: "Lato", sans-serif;
+            color: #777;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .background-arch {
+            background-image: url('wedding-arch.png');
+            /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            z-index: 1;
+            padding: 20px;
+            background-color: transparent;
+            opacity: 0.2;
+        }
+
+        .intro-title {
+            height: 40vh;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            font-family: "Lobster Two", cursive;
+        }
+
+        .intro-title__img {
+            margin: 0;
+            padding: 0;
+            background: url("countdown.jpeg") center/cover no-repeat;
+            width: 277px;
+            height: 78px;
+            display: inline-block;
+        }
+
+        @media (min-width: 480px) {
+            .intro-title__img {
+                width: 446px;
+                height: 125px;
+            }
+        }
+
+
+        .heading-secondary {
+            text-align: center;
+            color: #c9b375;
+            text-transform: uppercase;
+            font-family: serif;
+            font-weight: 500;
+            letter-spacing: 1px;
+            background-color: #fff;
+            font-size: 2rem;
+            padding: 3rem 1rem 2rem;
+            margin-bottom: -5rem;
+        }
+
+        @media (min-width: 769px) {
+            .heading-secondary {
+                font-size: 2.6rem;
+            }
+        }
+
+        .names {
+            text-transform: capitalize;
+            font-size: 7.5rem;
+            font-weight: 700;
+            color: #4b4b4b;
+            line-height: 1;
+            text-align: center;
+        }
+
+        .names__and-sign {
+            font-size: 10rem;
+            color: #c9b375;
+        }
+
+        @media (min-width: 769px) {
+            .names__name {
+                font-size: 12.5rem;
+            }
+
+            .names__and-sign {
+                font-size: 18rem;
+            }
+        }
+
+        .countdown-container {
+            text-align: center;
+            padding: 0.7rem;
+        }
+
+        .date-text {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            color: #aaaaaa;
+            margin: 2rem 1rem;
+            font-family: serif;
+            font-weight: 500;
+            letter-spacing: 1px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .date-text::before,
+        .date-text::after {
+            content: "";
+            height: 1px;
+            background-color: #aaaaaa;
+            position: absolute;
+            margin: 0 1rem;
+        }
+
+        .date-text::before {
+            left: -100%;
+            top: 50%;
+            width: 90%;
+        }
+
+        .date-text::after {
+            right: -100%;
+            top: 50%;
+            width: 90%;
+        }
+
+        .countdown {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-wrap: wrap;
+            flex-wrap: nowrap;
+            gap: 5rem;
+        }
+
+        .countdown__item {
+            padding: 2rem 1.5rem;
+            background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(221, 196, 128, 0.4)), to(rgba(221, 196, 128, 0.1)));
+            background-image: linear-gradient(to top, rgba(221, 196, 128, 0.4), rgba(221, 196, 128, 0.1));
+            border-radius: 5rem;
+            width: 15rem;
+            font-family: "Lobster Two", cursive;
+            line-height: 1.2;
+        }
+
+        .countdown__number {
+            text-shadow: 2px 2px 0 white;
+            font-weight: 900;
+            color: #a18f5d;
+            font-size: 8rem;
+        }
+
+        .countdown__description {
+            font-size: 3rem;
+            text-transform: lowercase;
+            color: #4b4b4b;
+        }
+
+        @media (max-width: 480px) {
+            .countdown__item {
+                width: 25%;
+            }
+
+            .countdown__number {
+                font-size: 2rem;
+            }
+
+            .countdown__description {
+                font-size: 1rem;
+            }
+
+            .countdown {
+                margin-top: 10%;
+                gap: 1rem;
+            }
+        }
+
+        @-webkit-keyframes moveInLeft {
+            from {
+                -webkit-transform: translateX(-10rem);
+                transform: translateX(-10rem);
+            }
+
+            to {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes moveInLeft {
+            from {
+                -webkit-transform: translateX(-10rem);
+                transform: translateX(-10rem);
+            }
+
+            to {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
+
+        .btn {
+            padding: 1.8rem 3rem;
+            border: none;
+            letter-spacing: 2px;
+            -webkit-transition: all 0.2s;
+            transition: all 0.2s;
+            background-color: #383838;
+            color: #fff;
+            outline: 0.3rem solid #c9b375;
+            outline-offset: 0.3rem;
+        }
+
+        .btn:hover {
+            cursor: pointer;
+            outline: 0.8rem solid #c9b375;
+        }
+
+        .btn:active {
+            outline: 0.3rem solid #c9b375;
+        }
+
+        @media (min-width: 769px) {
+            .btn {
+                font-size: 2rem;
+            }
+        }
+
+        @media (min-width: 480px) {
+            .btn {
+                font-size: 1.8rem;
+            }
+        }
+
+        .side-btns-section {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            z-index: 999;
+            opacity: 0.8;
+        }
+
+        .side-btns {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .side-btns__item {
+            -webkit-transform: translateX(-10rem);
+            transform: translateX(-10rem);
+            -webkit-transition: all 0.2s;
+            transition: all 0.2s;
+            padding: 1.5rem;
+            margin: 0;
+            color: #fff;
+            text-align: center;
+        }
+
+        .side-btns__item--1 {
+            font-size: 2.1rem;
+            background-color: #0a093b;
+            -webkit-animation: moveInLeft 1s ease-out 0.2s forwards;
+            animation: moveInLeft 1s ease-out 0.2s forwards;
+        }
+
+        .side-btns__item--2 {
+            font-size: 2.3rem;
+            background-color: #1c1a59;
+            -webkit-animation: moveInLeft 1s ease-out 0.6s forwards;
+            animation: moveInLeft 1s ease-out 0.6s forwards;
+        }
+
+        .side-btns__item:hover {
+            padding: 1.5rem 2.2rem;
+        }
+
+
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #c9b375;
+            z-index: 9999;
+        }
+
+        #loading-icon {
+            font-size: 48px;
+            color: #333;
+            animation: spin 1s infinite linear;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+        }
+
+        #modal h2 {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        #modal p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        #modal button {
+            background-color: #c9b375;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #modal button:hover {
+            background-color: #b58e4f;
+        }
+
+
+
+        @media (max-width: 480px) {
+            #modal {
+                width: 300px;
+                padding: 5px;
+            }
+
+            #modal h2 {
+                font-size: 16px;
+            }
+
+            #modal p {
+                font-size: 12px;
+            }
+
+            #modal button {
+                font-size: 12px;
+                padding: 3px 5px;
+            }
+        }
+
+        /*# sourceMappingURL=main.css.map */
+    </style>
+
+    <div class="background-arch">
+    </div>
+
+    <div id="loading-screen">
+        <i id="loading-icon" class="fas fa-spinner fa-spin"></i>
+    </div>
+
+    <div id="modal" hidden>
+        <h2>Let's get married!</h2>
+        <p id="modalText"> </p>
+        <button id="okay-btn">Okay</button>
+    </div>
+
+    <aside class="side-btns-section">
+        <ul class="side-btns">
+            <li>
+                <i class="side-btns__item side-btns__item--1 fas fa-volume-up"></i>
+            </li>
+            <li>
+                <a href="mailto:abhijithwedsdivya@gmail.com">
+                    <i class="side-btns__item side-btns__item--2 fas fa-envelope"></i></a>
+            </li>
+        </ul>
+
+    </aside>
+
+    <h1 class="heading-secondary" hidden>Our wedding</h1>
+    <div class="intro-title">
+        <!-- <img src="../dist/img/logo-orange.png" alt="logo" width="100px"> -->
+        <div class="intro-title__img"></div>
+        <p class="names" hidden>
+            <span class="names__name names__name--1">Abhi</span>
+            <span class="names__and-sign"> &</span>
+            <span class="names__name names__name--2">Dia</span>
+        </p>
+    </div>
+
+
+    <div class="countdown-container">
+        <h2 class="date-text">
+            <span class="date-text__inner"></span>
+        </h2>
+
+        <div class="countdown">
+            <div class="countdown__item" id="weeks">
+                <div class="countdown__number">
+                </div>
+                <div class="countdown__description">
+                    Weeks
+                </div>
+            </div>
+            <div class="countdown__item" id="days">
+                <div class="countdown__number">
+                </div>
+                <div class="countdown__description">
+                    Days
+                </div>
+            </div>
+            <div class="countdown__item" id="hours">
+                <div class="countdown__number">
+                </div>
+                <div class="countdown__description">
+                    Hours
+                </div>
+            </div>
+            <div class="countdown__item" id="minutes">
+                <div class="countdown__number">
+                </div>
+                <div class="countdown__description">
+                    Minutes
+                </div>
+            </div>
+            <div class="countdown__item" id="seconds">
+                <div class="countdown__number">
+                </div>
+                <div class="countdown__description">
+                    Seconds
+                </div>
+            </div>
+        </div>
+    </div>
+    <audio id="wedding-music" loop autoplay>
+        <source src="mallari.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="https://kit.fontawesome.com/4e31ef7c0f.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <script>
+        const weeklyMessages = [
+            "Get ready for a lifetime of adventures together! I can’t wait to explore this beautiful journey with you.",
+            "It’s finally our wedding week! I can’t believe we’re just days away from saying 'I do!'",
+            "Just a few weeks to go, and soon, I'll be able to hold you forever. Can’t wait to start this amazing journey together!",
+            "On our wedding day, I’ll be the luckiest person in the world, marrying my best friend and greatest love.",
+            "You're the reason I wake up smiling every day. I can’t wait to share a lifetime of smiles with you!",
+            "I may not be a photographer, but I can definitely picture our future together. Let's make it beautiful!",
+            "You're my favorite notification! Just the thought of you makes my heart race.",
+            "You must be made of copper and tellurium because you’re Cu-Te! Counting down the days until I can call you my wife!",
+            "Every time I think of you, my heart does a happy dance. Just wait until we dance together on our big day!",
+            "You're the peanut butter to my jelly; together, we make the perfect sandwich of love!",
+            "Just like a fine wine, my love for you only gets better with time. Can’t wait to toast to us!",
+            "Every moment without you feels like a year, but I know every second brings us closer to forever."
+        ];
+
+        const timeElements = document.querySelectorAll('.countdown__number');
+        const countdownContainer = document.querySelector('.countdown-container');
+        const loadingScreen = document.querySelector("#loading-screen");
+        const modalScreen = document.querySelector("#modal");
+        const modalText = document.querySelector("#modalText");
+        let showConfetti = false;
+        let showedWeeklyMessage = false;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.addEventListener("click", function () {
+                document.querySelector("#wedding-music").play();
+            })
+            const jsConfetti = new JSConfetti()
+            setInterval(() => {
+                if (showConfetti) { jsConfetti.addConfetti() };
+            }, 500);
+
+        })
+
+        document.querySelector("#okay-btn").addEventListener("click", () => {
+            modalScreen.style.display = "none";
+        })
+
+        let countdownDate = '2024-02-25 07:00:00';
+        let countdownValue = Date;
+        let countdownActive;
+        let nameVal1 = '';
+        let nameVal2 = '';
+
+        // SET DATE INPUT MIN WITH TODAY'S DATE
+        const today = new Date().toISOString().split('T')[0];
+
+
+
+        function populateNumbers() {
+            countdownValue = new Date(countdownDate).getTime();
+
+            const now = new Date().getTime();
+            const distance = countdownValue - now;
+            const second = 1000;
+            const minute = second * 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+            const week = day * 7;
+            const weeks = Math.floor(distance / week);
+            const days = Math.floor((distance % week) / day);
+            const hours = Math.floor((distance % day) / hour)
+            const minutes = Math.floor((distance % hour) / minute)
+            const seconds = Math.floor((distance % minute) / second)
+            // CHECK DATE
+            if (distance < 0) {
+                modalScreen.style.display = "block";
+                modalText.textContent = `You radiate like moonlight on the ocean, illuminating the depths of my soul even in the darkest night. 
+                Let’s cherish what we have and celebrate our love for all eternity. Love you endlessly! XOXO`
+                showConfetti = true;
+                clearInterval(countdownActive);
+                const countdownEl = document.querySelector('.countdown');
+                countdownEl.style.display = 'none';
+            } else {
+                if (!showedWeeklyMessage) {
+                    modalScreen.style.display = "block";
+                    modalText.textContent = weeklyMessages[weeks];
+                    showedWeeklyMessage = true;
+                }
+
+                // POPULATE COUNTDOWN
+                timeElements[0].textContent = weeks;
+                timeElements[1].textContent = days;
+                timeElements[2].textContent = hours;
+                timeElements[3].textContent = minutes;
+                timeElements[4].textContent = seconds;
+            }
+        }
+
+
+
+
+        function setDateString() {
+            // CHANGE DATE TO TEXT
+            const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            const newDate = new Date(countdownDate);
+            const weekday = newDate.getDay();
+            const dateValue = newDate.getDate();
+            const monthValue = newDate.getMonth();
+            const yearValue = newDate.getFullYear();
+
+            // 1st 2nd and 3rd OF MONTH
+            const toString = dateValue.toString();
+            const lastChar = toString.slice(-1);
+            const lastDigit = +(lastChar);
+
+            let suffix;
+            if (lastDigit === 1) {
+                suffix = "st";
+            } else if (lastDigit === 2) {
+                suffix = "nd";
+            } else if (lastDigit === 3) {
+                suffix = "rd";
+            }
+            else {
+                suffix = "th";
+            }
+
+            // POPULATE DATE PARAGRAPH
+            const dateString = document.querySelector('.date-text__inner');
+            dateString.textContent = `${weekdays[weekday]} ${dateValue}${suffix} ${months[monthValue]} ${yearValue}`;
+        }
+
+        function completeUI() {
+
+            // HIDE HERO IMAGE
+            const logoImg = document.querySelector('.intro-title__img');
+            logoImg.style.display = 'none';
+
+            // SHOW PARAGRAPH
+            const title = document.querySelector('.heading-secondary');
+            title.hidden = false;
+
+            // SHOW NAMES
+            const namesEl = document.querySelector('.names');
+            namesEl.hidden = false;
+
+            // SHOW COUNTDOWN
+            countdownContainer.hidden = false;
+            loadingScreen.style.display = "none";
+        }
+
+        (function updateDOM() {
+            countdownActive = setInterval(() => {
+                populateNumbers();
+                setDateString();
+                completeUI();
+            }, 1000);
+        })();
+        console.log(`
+        I was too stoned while making this. Please excuse the terrible code -Abhi`);
+    </script>
+</body>
+
+</html>
